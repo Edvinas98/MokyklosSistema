@@ -8,7 +8,7 @@ using System.Transactions;
 
 namespace MokyklosSistema.Models
 {
-    internal class Mokytojas
+    public class Mokytojas
     {
         public string Vardas { get; set; }
         public string Pavarde { get; set; }

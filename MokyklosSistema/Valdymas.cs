@@ -8,14 +8,14 @@ using MokyklosSistema.Services;
 
 namespace MokyklosSistema
 {
-    internal class Valdymas
+    public class Valdymas
     {
-        static void Main(string[] args)
-        {
-            MokytojuValdymas mokytojuvaldymas = new MokytojuValdymas();
-            MokytojuMeniu mokytojuMeniu = new MokytojuMeniu(mokytojuvaldymas);
-            mokytojuMeniu.PridetiTestiniusDuomenis();
-            mokytojuMeniu.PaleistiMeniu();
-        }
+        //static void Main(string[] args)
+        //{
+        //    MokytojuValdymas mokytojuvaldymas = new MokytojuValdymas();
+        //    MokytojuMeniu mokytojuMeniu = new MokytojuMeniu(mokytojuvaldymas);
+        //    mokytojuMeniu.PridetiTestiniusDuomenis();
+        //    mokytojuMeniu.PaleistiMeniu();
+        //}
     }
 }

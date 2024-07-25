@@ -7,7 +7,7 @@ using MokyklosSistema.Models;
 
 namespace MokyklosSistema.Services
 {
-    internal class MokytojuMeniu
+    public class MokytojuMeniu
     {
         private MokyklosValdymas _mokyklosValdymas;
         public MokytojuMeniu(MokyklosValdymas mokyklosValdymas)
@@ -40,13 +40,13 @@ namespace MokyklosSistema.Services
                             string pavarde = GetString();
                             Console.Write("Iveskite destoma dalyka: ");
                             string dalykas = GetString();
-                            Console.WriteLine(_mokyklosValdymas._mokytojuValdymas.PridetiMokytoja(new Mokytojas(vardas, pavarde, dalykas)));
+                            //Console.WriteLine(_mokyklosValdymas.PridetiMokytoja(new Mokytojas(vardas, pavarde, dalykas)));
                             break;
                         case "4":
-                            foreach (Mokytojas mokytojas in _mokytojuValdymas.GautiVisusMokytojus())
-                            {
-                                Console.WriteLine(mokytojas);
-                            }
+                            //foreach (Mokytojas mokytojas in _mokyklosValdymas.GautiVisusMokytojus())
+                            //{
+                            //    Console.WriteLine(mokytojas);
+                            //}
                             break;
                         case "0":
                             return;
@@ -65,9 +65,9 @@ namespace MokyklosSistema.Services
         }
         public void PridetiTestiniusDuomenis()
         {
-            _mokytojuValdymas.PridetiMokytoja(new Mokytojas("Jonas", "Jonaitis", "Matematika"));
-            _mokytojuValdymas.PridetiMokytoja(new Mokytojas("Petras", "Petraitis", "Anglu kalba"));
-            _mokytojuValdymas.PridetiMokytoja(new Mokytojas("Linas", "Linaitis", "Geografija"));
+            //_mokytojuValdymas.PridetiMokytoja(new Mokytojas("Jonas", "Jonaitis", "Matematika"));
+            //_mokytojuValdymas.PridetiMokytoja(new Mokytojas("Petras", "Petraitis", "Anglu kalba"));
+            //_mokytojuValdymas.PridetiMokytoja(new Mokytojas("Linas", "Linaitis", "Geografija"));
 
         }
 

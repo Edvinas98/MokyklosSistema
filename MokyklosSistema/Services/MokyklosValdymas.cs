@@ -7,7 +7,7 @@ using MokyklosSistema.Models;
 
 namespace MokyklosSistema.Services
 {
-    internal class MokyklosValdymas
+    public class MokyklosValdymas
     {
         private MokiniuValdymas _mokiniuValdymas;
         private MokytojuValdymas _mokytojuValdymas;

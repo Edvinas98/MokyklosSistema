@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MokyklosSistema.Models
 {
-    internal class MokytojuValdymas
+    public class MokytojuValdymas
     {
         public List<Mokytojas> Mokytojai { get; set; }
 
