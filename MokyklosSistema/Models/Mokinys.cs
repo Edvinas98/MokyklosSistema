@@ -15,12 +15,6 @@ namespace MokyklosSistema.Models
         public char Klase { get; set; }
         public List<Pazymys> Pazymiai { get; set; }
 
-
-        public Mokinys()
-        {
-
-
-        }
         public Mokinys(string vardas, string pavarde, int amzius, char klase)
         {
             Vardas = vardas;
@@ -32,13 +26,10 @@ namespace MokyklosSistema.Models
         }
         public override string ToString()
         {
-
             return $"Vardas: {Vardas} Pavarde: {Pavarde} Amzius:{Amzius} Klase {Klase}";
-
         }
         public void PridetiPazymi(Pazymys pazymys)
         {
-
             Pazymiai.Add(pazymys);
         }
     }

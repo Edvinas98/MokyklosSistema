@@ -9,20 +9,20 @@ namespace MokyklosSistema.Services
 {
     public class MokiniuValdymas
     {
-        static void Main (string[] args)
-        {
+        //static void Main (string[] args)
+        //{
 
-            List<Mokinys> mokiniai = new List<Mokinys>();
+        //    List<Mokinys> mokiniai = new List<Mokinys>();
 
-            while (true)
-            {
-
-
+        //    while (true)
+        //    {
 
 
 
-            }
-        }
+
+
+        //    }
+        //}
 
 
 

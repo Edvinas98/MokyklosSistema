@@ -7,42 +7,37 @@ using MokyklosSistema.Models;
 
 namespace MokyklosSistema.Services
 {
-    internal class MokytojuMeniu
+    internal class MokyklosMeniu
     {
-        private MokyklosValdymas _mokyklosValdymas;
-        public MokytojuMeniu(MokyklosValdymas mokyklosValdymas)
+        private MokytojuValdymas _mokytojuValdymas;
+        public MokyklosMeniu(MokytojuValdymas mokytojuValdymas)
         {
-            _mokyklosValdymas = mokyklosValdymas;
+            _mokytojuValdymas = mokytojuValdymas;
         }
         public void PaleistiMeniu()
         {
             while (true)
             {
-                Console.WriteLine("1. Pridėti nauja mokini");
-                Console.WriteLine("2. Pridėti nauja mokytoja");
-                Console.WriteLine("3. Prideti pazymi mokiniui is mokytojo");
-                Console.WriteLine("3. Perziureti visus mokinius");
-                Console.WriteLine("4. Perziureti visus mokytojus");
-                Console.WriteLine("5. Perziureti mokinio pazymius");
+                Console.WriteLine("1. Pridėti mokytoja");
+                Console.WriteLine("2. Rodyti visus mokytojus");
                 Console.WriteLine("0. Išeiti");
                 Console.Write("Pasirinkite veiksmą: ");
                 string pasirinkimas = GetString();
+
                 try
                 {
                     switch (pasirinkimas)
                     {
                         case "1":
-                            break;
-                        case "2":
                             Console.Write("Iveskite varda: ");
                             string vardas = GetString();
                             Console.Write("Iveskite pavarde: ");
                             string pavarde = GetString();
                             Console.Write("Iveskite destoma dalyka: ");
                             string dalykas = GetString();
-                            Console.WriteLine(_mokyklosValdymas._mokytojuValdymas.PridetiMokytoja(new Mokytojas(vardas, pavarde, dalykas)));
+                            Console.WriteLine(_mokytojuValdymas.PridetiMokytoja(new Mokytojas(vardas, pavarde, dalykas)));
                             break;
-                        case "4":
+                        case "2":
                             foreach (Mokytojas mokytojas in _mokytojuValdymas.GautiVisusMokytojus())
                             {
                                 Console.WriteLine(mokytojas);

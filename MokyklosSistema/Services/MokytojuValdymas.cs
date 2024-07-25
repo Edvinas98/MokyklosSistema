@@ -19,9 +19,20 @@ namespace MokyklosSistema.Models
         /// Prideda nauja mokytoja
         /// </summary>
         /// <param name="mokytojas"></param>
-        public void PridetiMokytoja(Mokytojas mokytojas)
+        public string PridetiMokytoja(Mokytojas naujasMokytojas)
         {
-            Mokytojai.Add(mokytojas);
+            bool bFound = false;
+
+            foreach (Mokytojas mokytojas in Mokytojai)
+            {
+                if (PatikrintiMokytoja(naujasMokytojas))
+                    bFound = true;
+            }
+            if (bFound)
+                return "Mokytojas su tokiu vardu ir pavarde jau yra sarase!";
+
+            Mokytojai.Add(naujasMokytojas);
+            return "Mokytojas sekmingai pridetas";
         }
 
         /// <summary>
@@ -31,6 +42,16 @@ namespace MokyklosSistema.Models
         public List<Mokytojas> GautiVisusMokytojus()
         {
             return Mokytojai;
+        }
+
+        public bool PatikrintiMokytoja(Mokytojas naujasMokytojas)
+        {
+            foreach(Mokytojas mokytojas in Mokytojai)
+            {
+                if (mokytojas.PatikrintiVardaIrPavarde(naujasMokytojas.Vardas, naujasMokytojas.Pavarde))
+                    return true;
+            }
+            return false;
         }
     }
 }

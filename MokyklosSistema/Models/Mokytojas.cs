@@ -21,9 +21,16 @@ namespace MokyklosSistema.Models
             Dalykas = dalykas;
         }
 
+        public bool PatikrintiVardaIrPavarde(string vardas, string pavarde)
+        {
+            if(Vardas == vardas && Pavarde == pavarde)
+                return true;
+            return false;
+        }
+
         public override string ToString()
         {
-            return $"{Vardas} {Pavarde} destomas dalykas: {Dalykas}";
+            return $"{Vardas} {Pavarde}  destomas dalykas: {Dalykas}";
         }
     }
 }
