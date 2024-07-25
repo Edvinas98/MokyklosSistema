@@ -12,9 +12,9 @@ namespace MokyklosSistema.Models
 
         public string Dalykas { get; set; }
         public int Ivertinimas { get; set; }
-        public DateOnly IvykdymoData { get; set; }
+        public string IvykdymoData { get; set; }
 
-        public Pazymys(string dalykas, int ivertinimas, DateOnly ivykdymoData)
+        public Pazymys(string dalykas, int ivertinimas, string ivykdymoData)
         {
 
             Dalykas = dalykas;
@@ -26,3 +26,4 @@ namespace MokyklosSistema.Models
         
     }
 }  
+ 
