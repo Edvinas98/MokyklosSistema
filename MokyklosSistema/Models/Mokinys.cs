@@ -10,12 +10,12 @@ namespace MokyklosSistema.Models
     {
         public string Vardas { get; set; }
         public string Pavarde { get; set; }
-        public int Amzius { get; set; }
-        public char Klase { get; set; }
+        public byte Amzius { get; set; }
+        public byte Klase { get; set; }
         public List<Pazymys> Pazymiai { get; set; }
 
 
-        public Mokinys(string vardas, string pavarde, int amzius, char klase)
+        public Mokinys(string vardas, string pavarde, byte amzius, byte klase)
         {
             Vardas = vardas;
             Pavarde = pavarde;
@@ -26,19 +26,27 @@ namespace MokyklosSistema.Models
 
         public override string ToString()
         {
-            return $"Vardas: {Vardas} Pavarde: {Pavarde} Amzius:{Amzius} Klase {Klase}";
+            return $"{Vardas} {Pavarde}     Amzius: {Amzius} metu    Klase: {Klase}";
         }
 
+        /// <summary>
+        /// Prideda pazymi i pazymiu sarasa
+        /// </summary>
+        /// <param name="pazymys"></param>
         public void PridetiPazymi(Pazymys pazymys)
         {
             Pazymiai.Add(pazymys);
         }
 
+        /// <summary>
+        /// Grazina visa pazymiu informacija string tipe
+        /// </summary>
+        /// <returns></returns>
         public string GautiPazymius()
         {
             string tempPazymiai = "";
 
-            foreach(Pazymys pazymys in Pazymiai)
+            foreach (Pazymys pazymys in Pazymiai)
             {
                 tempPazymiai += pazymys;
             }
@@ -47,6 +55,12 @@ namespace MokyklosSistema.Models
             return tempPazymiai;
         }
 
+        /// <summary>
+        /// Patikrina ar ieskomo mokinio vardas ir pavarde atitinka si mokini
+        /// </summary>
+        /// <param name="vardas"></param>
+        /// <param name="pavarde"></param>
+        /// <returns></returns>
         public bool PatikrintiVardaIrPavarde(string vardas, string pavarde)
         {
             if (Vardas == vardas && Pavarde == pavarde)

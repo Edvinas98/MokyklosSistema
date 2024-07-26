@@ -9,44 +9,43 @@ namespace MokyklosSistema.Services
 {
     public class MokytojuMeniu
     {
-        private MokyklosValdymas _mokyklosValdymas;
-        public MokytojuMeniu(MokyklosValdymas mokyklosValdymas)
+        private MokytojuValdymas _mokytojuValdymas;
+        public MokytojuMeniu(MokytojuValdymas mokytojuValdymas)
         {
-            _mokyklosValdymas = mokyklosValdymas;
+            _mokytojuValdymas = mokytojuValdymas;
         }
+
+        /// <summary>
+        /// Konsoles meniu rasymas ir skaitymas
+        /// </summary>
         public void PaleistiMeniu()
         {
             while (true)
             {
-                Console.WriteLine("1. Pridėti nauja mokini");
-                Console.WriteLine("2. Pridėti nauja mokytoja");
-                Console.WriteLine("3. Prideti pazymi mokiniui is mokytojo");
-                Console.WriteLine("3. Perziureti visus mokinius");
-                Console.WriteLine("4. Perziureti visus mokytojus");
-                Console.WriteLine("5. Perziureti mokinio pazymius");
+                Console.WriteLine("1. Pridėti mokytoja");
+                Console.WriteLine("2. Rodyti visus mokytojus");
                 Console.WriteLine("0. Išeiti");
                 Console.Write("Pasirinkite veiksmą: ");
                 string pasirinkimas = GetString();
+
                 try
                 {
                     switch (pasirinkimas)
                     {
                         case "1":
-                            break;
-                        case "2":
                             Console.Write("Iveskite varda: ");
                             string vardas = GetString();
                             Console.Write("Iveskite pavarde: ");
                             string pavarde = GetString();
                             Console.Write("Iveskite destoma dalyka: ");
                             string dalykas = GetString();
-                            //Console.WriteLine(_mokyklosValdymas.PridetiMokytoja(new Mokytojas(vardas, pavarde, dalykas)));
+                            Console.WriteLine(_mokytojuValdymas.PridetiMokytoja(new Mokytojas(vardas, pavarde, dalykas)));
                             break;
-                        case "4":
-                            //foreach (Mokytojas mokytojas in _mokyklosValdymas.GautiVisusMokytojus())
-                            //{
-                            //    Console.WriteLine(mokytojas);
-                            //}
+                        case "2":
+                            foreach (Mokytojas mokytojas in _mokytojuValdymas.GautiVisusMokytojus())
+                            {
+                                Console.WriteLine(mokytojas);
+                            }
                             break;
                         case "0":
                             return;
@@ -63,17 +62,25 @@ namespace MokyklosSistema.Services
                 Console.WriteLine();
             }
         }
+
+        /// <summary>
+        /// Pridedami testiniai duomenys, kad nereiktu visko suvedineti per meniu
+        /// </summary>
         public void PridetiTestiniusDuomenis()
         {
-            //_mokytojuValdymas.PridetiMokytoja(new Mokytojas("Jonas", "Jonaitis", "Matematika"));
-            //_mokytojuValdymas.PridetiMokytoja(new Mokytojas("Petras", "Petraitis", "Anglu kalba"));
-            //_mokytojuValdymas.PridetiMokytoja(new Mokytojas("Linas", "Linaitis", "Geografija"));
+            _mokytojuValdymas.PridetiMokytoja(new Mokytojas("Jonas", "Jonaitis", "Matematika"));
+            _mokytojuValdymas.PridetiMokytoja(new Mokytojas("Petras", "Petraitis", "Anglu kalba"));
+            _mokytojuValdymas.PridetiMokytoja(new Mokytojas("Linas", "Linaitis", "Geografija"));
 
         }
 
+        /// <summary>
+        /// Nuskaito vartotojo ivesti ir grazina string tipo rezultata
+        /// </summary>
+        /// <returns></returns>
         public string GetString()
         {
-            while(true)
+            while (true)
             {
                 string input = Console.ReadLine() ?? string.Empty;
                 if (input != "")
@@ -83,11 +90,15 @@ namespace MokyklosSistema.Services
             }
         }
 
+        /// <summary>
+        /// Nuskaito vartotojo ivesti ir grazina string int tipo rezultata
+        /// </summary>
+        /// <returns></returns>
         public int GetInt()
         {
             while (true)
             {
-                if(!int.TryParse(Console.ReadLine(), out int input))
+                if (!int.TryParse(Console.ReadLine(), out int input))
                     Console.Write("Klaida, bandykite ivesti is naujo: ");
                 else
                     return input;

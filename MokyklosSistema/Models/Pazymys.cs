@@ -10,10 +10,10 @@ namespace MokyklosSistema.Models
     public class Pazymys
     {
         public string Dalykas { get; set; }
-        public int Ivertinimas { get; set; }
+        public byte Ivertinimas { get; set; }
         public string IvykdymoData { get; set; }
 
-        public Pazymys(string dalykas, int ivertinimas, string ivykdymoData)
+        public Pazymys(string dalykas, byte ivertinimas, string ivykdymoData)
         {
             Dalykas = dalykas;
             Ivertinimas = ivertinimas;

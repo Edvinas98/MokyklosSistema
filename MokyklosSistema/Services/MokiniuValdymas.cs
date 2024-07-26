@@ -16,6 +16,11 @@ namespace MokyklosSistema.Services
             Mokiniai = new List<Mokinys>();
         }
 
+        /// <summary>
+        /// Prideda mokini i sarasa, jei mokinio su tokiu vardu ir pavarde nera sarase
+        /// </summary>
+        /// <param name="naujasMokinys"></param>
+        /// <returns></returns>
         public string PridetiMokini(Mokinys naujasMokinys)
         {
             bool bFound = false;
@@ -32,21 +37,35 @@ namespace MokyklosSistema.Services
             return "Mokinys sekmingai pridetas";
         }
 
+        /// <summary>
+        /// Grazina mokiniu sarasa
+        /// </summary>
+        /// <returns></returns>
         public List<Mokinys> GautiVisusMokinius()
         {
             return Mokiniai;
         }
 
+        /// <summary>
+        /// Grazina visa pazymiu informacija string tipe, jei randa mokini pagal varda ir pavarde
+        /// </summary>
+        /// <param name="naujasMokinys"></param>
+        /// <returns></returns>
         public string GautiMokinioPazymius(Mokinys naujasMokinys)
         {
             foreach (Mokinys mokinys in Mokiniai)
             {
-                if (PatikrintiMokini(naujasMokinys))
+                if (mokinys.PatikrintiVardaIrPavarde(naujasMokinys.Vardas, naujasMokinys.Pavarde))
                     return mokinys.GautiPazymius();
             }
             return "Mokinys nerastas";
         }
 
+        /// <summary>
+        /// Patikrina ar mokinys yra sarase pagal varda ir pavarde
+        /// </summary>
+        /// <param name="naujasMokinys"></param>
+        /// <returns></returns>
         public bool PatikrintiMokini(Mokinys naujasMokinys)
         {
             foreach (Mokinys mokinys in Mokiniai)
@@ -57,90 +76,23 @@ namespace MokyklosSistema.Services
             return false;
         }
 
-        //static void Main(string[] args)
-        //{
-
-        //    List<Mokinys> mokiniai = new List<Mokinys>();
-
-        //    while (true)
-        //    {
-        //        Console.WriteLine("Pasirinkite veiksma:");
-        //        Console.WriteLine("1.Prideti mokini");
-        //        Console.WriteLine("2.Prideti pazymi mokiniui");
-        //        Console.WriteLine("3.Paziureti mokinio informacija");
-        //        Console.WriteLine("4. Iseiti");
-
-        //        int pasirinkimas = int.Parse(Console.ReadLine());
-        //        switch (pasirinkimas)
-        //        {
-        //            case 1:
-        //                Console.WriteLine("Iveskite mokinio varda:");
-        //                string vardas = Console.ReadLine();
-        //                Console.WriteLine("Iveskite mokinio pavarde:");
-        //                string pavarde = Console.ReadLine();
-        //                Console.WriteLine("Iveskite mokinio amziu:");
-        //                int amzius = int.Parse(Console.ReadLine());
-        //                Console.WriteLine("Iveskite mokinio klase:");
-        //                char klase = char.Parse(Console.ReadLine());
-
-        //                Mokinys naujasmokinys = new Mokinys(vardas, pavarde, amzius, klase);
-        //                mokiniai.Add(naujasmokinys);
-        //                Console.WriteLine("Mokinys pridetas sekmingai!");
-        //                break;
-        //            case 2:
-        //                Console.WriteLine("Iveskite mokinio varda kuriam norite prideti pazymi:");
-        //                string mokinioVardas = Console.ReadLine();
-        //                Mokinys mokynis = mokiniai.Find(m => m.Vardas == mokinioVardas);
-        //                if (mokynis != null)
-        //                {
-        //                    Console.WriteLine("Iveskite dalyka:");
-        //                    string dalykas = Console.ReadLine();
-        //                    Console.WriteLine("Iveskite pazyma");
-        //                    int ivertinimas = int.Parse(Console.ReadLine());
-        //                    Pazymys pazymys = new Pazymys(dalykas, ivertinimas, DateTime.Today.ToString());
-        //                    mokynis.PridetiPazymi(pazymys);
-
-        //                }
-
-        //                else
-        //                {
-
-        //                    Console.WriteLine("Mokinys nerastas");
-
-        //                }
-        //                break;
-
-        //            case 3:
-        //                Console.WriteLine("Iveskite mokinio varda,kurio informacija  norite paziureti");
-        //                string infoVardas = Console.ReadLine();
-        //                Mokinys infoMokinys = mokiniai.Find(m => m.Vardas == infoVardas);
-        //                if (infoMokinys != null)
-        //                {
-
-        //                    Console.WriteLine(infoMokinys.ToString());
-        //                    Console.WriteLine("Pazymiai:");
-        //                    foreach (var pazymys in infoMokinys.Pazymiai)
-        //                    {
-        //                        Console.WriteLine($"Dalykas:{pazymys.Dalykas},Pazymys: {pazymys.Ivertinimas}");
-        //                    }
-
-        //                }
-        //                else
-        //                {
-        //                    Console.WriteLine("Mokinys nerastas");
-
-        //                }
-        //                break;
-
-
-        //            case 4:
-        //                return;
-
-        //            default:
-        //                Console.WriteLine("Netinkamas pasirinkimas");
-        //                break;
-        //        }
-        //    }
-        //}
+        /// <summary>
+        /// Prideda pazymi mokiniui, jei randa mokini sarase pagal varda ir pavarde
+        /// </summary>
+        /// <param name="naujasMokinys"></param>
+        /// <param name="pazymys"></param>
+        /// <returns></returns>
+        public string PridetiPazymi(Mokinys naujasMokinys, Pazymys pazymys)
+        {
+            foreach (Mokinys mokinys in Mokiniai)
+            {
+                if (mokinys.PatikrintiVardaIrPavarde(naujasMokinys.Vardas, naujasMokinys.Pavarde))
+                {
+                    mokinys.PridetiPazymi(pazymys);
+                    return "Pazymys pridetas\n";
+                }
+            }
+            return "Mokinys nerastas\n";
+        }
     }
 }

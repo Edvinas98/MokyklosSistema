@@ -21,6 +21,12 @@ namespace MokyklosSistema.Models
             Dalykas = dalykas;
         }
 
+        /// <summary>
+        /// Patikrina ar ieskomo mokytojo vardas ir pavarde atitinka si mokytoja
+        /// </summary>
+        /// <param name="vardas"></param>
+        /// <param name="pavarde"></param>
+        /// <returns></returns>
         public bool PatikrintiVardaIrPavarde(string vardas, string pavarde)
         {
             if(Vardas == vardas && Pavarde == pavarde)
@@ -30,7 +36,16 @@ namespace MokyklosSistema.Models
 
         public override string ToString()
         {
-            return $"{Vardas} {Pavarde}  destomas dalykas: {Dalykas}";
+            return $"{Vardas} {Pavarde}  Destomas dalykas: {Dalykas}";
+        }
+
+        /// <summary>
+        /// Grazina destoma dalyka
+        /// </summary>
+        /// <returns></returns>
+        public string GautiDestomaDalyka()
+        {
+            return Dalykas;
         }
     }
 }
